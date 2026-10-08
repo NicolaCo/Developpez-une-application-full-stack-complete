@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "private": true,
   "engines": {
@@ -29,9 +30,13 @@
     "@angular/build": "^22.2.1",
     "@angular/cli": "~22.2.1",
     "@angular/compiler-cli": "^22.2.1",
+    "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.4",
+    "angular-eslint": "22.5.0",
+    "eslint": "^10.9.1",
     "jsdom": "^30.1.2",
     "typescript": "~6.0.3",
+    "typescript-eslint": "8.69.0",
     "vitest": "^5.0.0"
   }
 }

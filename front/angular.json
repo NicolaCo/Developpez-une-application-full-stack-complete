@@ -26,7 +26,10 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.png", "src/assets"],
+            "assets": [
+              "src/favicon.png",
+              "src/assets"
+            ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles/styles.scss"
@@ -63,11 +66,13 @@
               "namedChunks": true
             },
             "testing": {
-      "aot": false,
-      "optimization": false,
-      "extractLicenses": false,
-      "polyfills": ["zone.js"]
-    }
+              "aot": false,
+              "optimization": false,
+              "extractLicenses": false,
+              "polyfills": [
+                "zone.js"
+              ]
+            }
           },
           "defaultConfiguration": "production"
         },
@@ -96,12 +101,21 @@
             "reporters": [
               "default"
             ],
-"coverageReporters": [
-            "html",
-            "text-summary"
-          ],
-          "buildTarget": ":build:testing",
+            "coverageReporters": [
+              "html",
+              "text-summary"
+            ],
+            "buildTarget": ":build:testing",
             "runner": "vitest"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
@@ -132,5 +146,10 @@
     "@schematics/angular:resolver": {
       "typeSeparator": "."
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

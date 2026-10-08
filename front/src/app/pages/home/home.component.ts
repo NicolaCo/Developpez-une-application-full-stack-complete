@@ -5,13 +5,16 @@ import { MatButton } from '@angular/material/button';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButton]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    // TODO Remove if empty
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // TODO Remove if empty
+  }
 
   start() {
     alert('Commencez par lire le README et à vous de jouer !');
