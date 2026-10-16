@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: sql/001-login.sql
+      relativeToChangelogFile: true
