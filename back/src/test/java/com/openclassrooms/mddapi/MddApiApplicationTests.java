@@ -1,10 +1,10 @@
 package com.openclassrooms.mddapi;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MddApiApplicationTests {
+import com.openclassrooms.mddapi.authentification.BaseIntegrationTest;
+
+class MddApiApplicationTests extends BaseIntegrationTest {
 
 	@Test
 	void contextLoads() {
