@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: sql/001-login.sql
       relativeToChangelogFile: true
+  - include:
+      file: sql/002-topics.sql
+      relativeToChangelogFile: true
