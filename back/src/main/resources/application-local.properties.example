@@ -1,0 +1,4 @@
+spring.datasource.username=change_me
+spring.datasource.password=change_me
+# Generate a secret with: openssl rand -base64 64
+jwt.secret=change_me
