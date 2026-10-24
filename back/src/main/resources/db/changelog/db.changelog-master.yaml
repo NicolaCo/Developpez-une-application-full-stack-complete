@@ -5,3 +5,9 @@ databaseChangeLog:
   - include:
       file: sql/002-topics.sql
       relativeToChangelogFile: true
+  - include:
+      file: sql/003-posts.sql
+      relativeToChangelogFile: true
+  - include:
+      file: sql/004-comments.sql
+      relativeToChangelogFile: true
