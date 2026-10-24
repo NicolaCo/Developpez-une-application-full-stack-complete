@@ -3,6 +3,8 @@ package com.openclassrooms.mddapi.support;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.Instant;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,12 +20,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.mysql.MySQLContainer;
 
 import com.jayway.jsonpath.JsonPath;
-import com.openclassrooms.mddapi.authentication.model.User;
-import com.openclassrooms.mddapi.authentication.repository.UserRepository;
-import com.openclassrooms.mddapi.authentication.security.JwtService;
-import com.openclassrooms.mddapi.topic.model.Topic;
-import com.openclassrooms.mddapi.topic.repository.SubscriptionRepository;
-import com.openclassrooms.mddapi.topic.repository.TopicRepository;
+import com.openclassrooms.mddapi.model.User;
+import com.openclassrooms.mddapi.repository.UserRepository;
+import com.openclassrooms.mddapi.security.JwtService;
+import com.openclassrooms.mddapi.model.Comment;
+import com.openclassrooms.mddapi.model.Post;
+import com.openclassrooms.mddapi.repository.CommentRepository;
+import com.openclassrooms.mddapi.repository.PostRepository;
+import com.openclassrooms.mddapi.model.Topic;
+import com.openclassrooms.mddapi.repository.SubscriptionRepository;
+import com.openclassrooms.mddapi.repository.TopicRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -47,6 +53,12 @@ public abstract class BaseIntegrationTest {
     protected SubscriptionRepository subscriptionRepository;
 
     @Autowired
+    protected PostRepository postRepository;
+
+    @Autowired
+    protected CommentRepository commentRepository;
+
+    @Autowired
     protected PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -64,6 +76,8 @@ public abstract class BaseIntegrationTest {
 
     @BeforeEach
     void cleanDatabase() {
+        commentRepository.deleteAll();
+        postRepository.deleteAll();
         subscriptionRepository.deleteAll();
         topicRepository.deleteAll();
         userRepository.deleteAll();
@@ -100,5 +114,13 @@ public abstract class BaseIntegrationTest {
 
     protected Topic persistedTopic(String title, String description) {
         return topicRepository.save(new Topic(title, description));
+    }
+
+    protected Post persistedPost(String title, String content, Instant date, Long topicId, Long userId) {
+        return postRepository.save(new Post(title, content, date, topicId, userId));
+    }
+
+    protected Comment persistedComment(String content, Instant date, Long postId, Long userId) {
+        return commentRepository.save(new Comment(content, date, postId, userId));
     }
 }
