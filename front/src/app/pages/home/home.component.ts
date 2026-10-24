@@ -1,22 +1,18 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [MatButton]
+  imports: [MatButton, RouterLink]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   constructor() {
     // TODO Remove if empty
   }
 
-  ngOnInit(): void {
-    // TODO Remove if empty
-  }
+    // TODO : implémenter ngOnInit(): void {} si besoin
 
-  start() {
-    alert('Commencez par lire le README et à vous de jouer !');
-  }
 }
