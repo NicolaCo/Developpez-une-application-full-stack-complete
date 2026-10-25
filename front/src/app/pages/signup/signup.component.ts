@@ -27,7 +27,7 @@ export class SignupComponent {
   public onSubmit(): void {
     this.onError = false;
     this.authService.register(this.form.getRawValue()).subscribe({
-      next: () => this.router.navigate(['/topics']),
+      next: () => this.router.navigate(['/']),
       error: () => this.onError = true
     });
   }

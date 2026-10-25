@@ -1,8 +1,11 @@
-<div class="center">
-  <img src="/assets/logo_p6.png" alt="logo" />
-  <h1>Welcome to MDD</h1>
-  <button mat-raised-button color="primary" routerLink="/login" class="btn" aria-label="Go to login page">Se connecter</button>
-  <button mat-raised-button color="primary" routerLink="/signup" class="btn" aria-label="Go to subscribe page">S'inscrire</button>
-  <button mat-raised-button color="primary" routerLink="/topics" class="btn" aria-label="Go to topics page">Lister les themes</button>
-</div>
+@if (!isLoggedIn()) {
+  <div class="center">
+    <img src="/assets/logo_p6.png" alt="logo" />
+    <h1>Welcome to MDD</h1>
+    <button mat-raised-button color="primary" routerLink="/login" class="btn" aria-label="Go to login page">Se connecter</button>
+    <button mat-raised-button color="primary" routerLink="/signup" class="btn" aria-label="Go to subscribe page">S'inscrire</button>
+  </div>
+} @else {
+  <app-feed></app-feed>
+}
 

@@ -7,7 +7,6 @@ import { TopicsComponent } from './pages/topics/topics.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { CreatepostComponent } from './pages/createpost/createpost.component';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
-import { FeedComponent } from './pages/feed/feed.component';
 
 export const routes: Routes = [
     {
@@ -25,11 +24,6 @@ export const routes: Routes = [
     {
         path: 'topics',
         component: TopicsComponent,
-        canActivate: [authGuard]
-    },
-    {
-        path: 'feed',
-        component: FeedComponent,
         canActivate: [authGuard]
     },
     {

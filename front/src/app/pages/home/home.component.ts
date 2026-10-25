@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/service/auth.service';
+import { FeedComponent } from '../../components/feed/feed.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [MatButton, RouterLink]
+  imports: [MatButton, RouterLink, FeedComponent]
 })
 export class HomeComponent {
-  constructor() {
-    // TODO Remove if empty
-  }
+  private authService = inject(AuthService);
 
-    // TODO : implémenter ngOnInit(): void {} si besoin
-
+  protected readonly isLoggedIn = this.authService.isLoggedIn;
 }

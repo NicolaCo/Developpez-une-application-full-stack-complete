@@ -26,7 +26,14 @@ export class LoginComponent {
   public onSubmit(): void {
     this.onError = false;
     this.authService.login(this.form.getRawValue()).subscribe({
-      next: () => this.router.navigate([this.returnUrl()]),
+      next: () => {
+        const returnUrl = this.returnUrl();
+        if (returnUrl && returnUrl !== '/login' && returnUrl !== '/signup') {
+          this.router.navigateByUrl(returnUrl);
+        } else {
+          this.router.navigate(['/']);
+        }
+      },
       error: () => this.onError = true
     });
   }
