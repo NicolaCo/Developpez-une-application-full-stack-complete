@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { MaterialModule } from '../../shared/material.module';
+import { MaterialModule } from '../../../shared/material.module';
 import { PostService } from '../../core/service/post.service';
 import { Post, PostOrder } from '../../core/model/post.interface';
 
