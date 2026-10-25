@@ -1,0 +1,43 @@
+<div class="post-detail" fxLayout="column" fxLayoutAlign="start center">
+  <mat-card class="post-card">
+    @if (post(); as current) {
+      <mat-card-header>
+        <mat-card-title>{{ current.title }}</mat-card-title>
+        <mat-card-subtitle>{{ current.author }} · {{ current.date | date: 'short' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ current.content }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="button" (click)="back()">Retour</button>
+      </mat-card-actions>
+    }
+  </mat-card>
+
+  <mat-card class="comments-card">
+    <mat-card-header>
+      <mat-card-title>Commentaires</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column">
+      @for (comment of comments(); track comment.id) {
+        <div class="comment">
+          <div class="comment-meta">{{ comment.author }} · {{ comment.date | date: 'short' }}</div>
+          <p>{{ comment.content }}</p>
+        </div>
+      } @empty {
+        <p class="empty">Aucun commentaire pour le moment.</p>
+      }
+    </mat-card-content>
+    <mat-card-content>
+      <form class="comment-form" [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column">
+        <mat-form-field fxFlex>
+          <textarea matInput placeholder="Votre commentaire" formControlName="content" rows="3"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Publier</button>
+        @if (onError) {
+          <p class="error">Une erreur est survenue</p>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

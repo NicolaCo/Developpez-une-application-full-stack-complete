@@ -6,7 +6,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { TopicsComponent } from './pages/topics/topics.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { CreatepostComponent } from './pages/createpost/createpost.component';
-import { TopicComponent } from './pages/topic/topic.component';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
+import { FeedComponent } from './pages/feed/feed.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,11 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
+        path: 'feed',
+        component: FeedComponent,
+        canActivate: [authGuard]
+    },
+    {
         path: 'posts',
         component: PostsComponent,
         canActivate: [authGuard]
@@ -38,7 +44,7 @@ export const routes: Routes = [
     },
     {
         path: 'posts/:id',
-        component: TopicComponent,
+        component: PostDetailComponent,
         canActivate: [authGuard]
     },
 ];
