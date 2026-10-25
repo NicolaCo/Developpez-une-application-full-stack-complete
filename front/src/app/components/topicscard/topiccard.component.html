@@ -1,0 +1,27 @@
+<mat-card class="item">
+  <mat-card-header>
+    <mat-card-title>{{ topic.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ topic.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    @if (topic.isSubscribed) {
+      <button mat-raised-button color="primary" type="button" (click)="onSubscribe()">
+        <mat-icon>check_circle</mat-icon>
+        <span class="ml1">Déjà abonné</span>
+      </button>
+    } @else {
+      <button mat-raised-button color="primary" type="button" (click)="onSubscribe()">
+        <mat-icon>add_circle</mat-icon>
+        <span class="ml1">S'abonner</span>
+      </button>
+    }
+    <button mat-raised-button color="accent" type="button" (click)="onDetail()">
+      <span class="ml1">Detail</span>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
