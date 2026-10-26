@@ -28,7 +28,7 @@ export class LoginComponent {
     this.authService.login(this.form.getRawValue()).subscribe({
       next: () => {
         const returnUrl = this.returnUrl();
-        if (returnUrl && returnUrl !== '/login' && returnUrl !== '/signup') {
+        if (this.isSafeInternalUrl(returnUrl)) {
           this.router.navigateByUrl(returnUrl);
         } else {
           this.router.navigate(['/']);
@@ -38,7 +38,16 @@ export class LoginComponent {
     });
   }
 
-  private returnUrl(): string {
-    return this.router.parseUrl(this.router.url).queryParams['returnUrl'] ?? '/topics';
+  private returnUrl(): string | null {
+    return this.router.parseUrl(this.router.url).queryParams['returnUrl'] ?? null;
+  }
+
+  private isSafeInternalUrl(url: string | null): url is string {
+    return !!url
+      && url.startsWith('/')
+      && !url.startsWith('//')
+      && url !== '/'
+      && url !== '/login'
+      && url !== '/signup';
   }
 }
