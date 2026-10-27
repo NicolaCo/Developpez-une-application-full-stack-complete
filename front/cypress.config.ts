@@ -63,6 +63,14 @@ export default defineConfig({
     expose: {
       apiUrl: 'http://localhost:8080/api'
     },
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
+      timestamp: 'yyyy_mm_dd_HH-MM-ss'
+    },
     setupNodeEvents(on) {
       on('task', {
         resetDb() {
