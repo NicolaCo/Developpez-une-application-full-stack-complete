@@ -1,0 +1,22 @@
+{
+  "subscribed": ["Angular", "Spring Boot"],
+  "notSubscribed": "Tests",
+  "all": [
+    "Angular",
+    "Spring Boot",
+    "Tests",
+    "Architecture",
+    "DevOps",
+    "Java",
+    "TypeScript",
+    "REST API",
+    "Security",
+    "Database",
+    "Docker",
+    "Git",
+    "Kotlin",
+    "Kubernetes",
+    "CI/CD",
+    "Cloud"
+  ]
+}
