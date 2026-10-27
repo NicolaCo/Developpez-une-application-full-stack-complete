@@ -4,10 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "back:e2e": "cd ../back && ./scripts/init-e2e-db.sh && ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev,local,e2e",
+    "e2e:db:init": "cd ../back && ./scripts/init-e2e-db.sh",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e:open": "start-server-and-test start http-get://localhost:4200 cy:open",
+    "e2e": "start-server-and-test start http-get://localhost:4200 cy:run"
   },
   "private": true,
   "engines": {
@@ -33,8 +39,10 @@
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.4",
     "angular-eslint": "22.5.0",
+    "cypress": "^16.2.0",
     "eslint": "^10.9.1",
     "jsdom": "^30.1.2",
+    "start-server-and-test": "^3.0.13",
     "typescript": "~6.0.3",
     "typescript-eslint": "8.69.0",
     "vitest": "^5.0.0"
