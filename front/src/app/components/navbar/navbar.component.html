@@ -1,14 +1,14 @@
 @if (isLoggedIn()) {
-  <mat-toolbar color="primary" class="navbar">
+  <mat-toolbar color="primary" class="navbar" data-cy="navbar">
     <div class="navbar-brand">
       <a routerLink="/" class="brand-link">MDD</a>
     </div>
     <span class="spacer"></span>
     <nav class="navbar-links">
-      <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
-      <a mat-button routerLink="/posts" routerLinkActive="active-link">Articles</a>
-      <a mat-button routerLink="/topics" routerLinkActive="active-link">Thématiques</a>
-      <button mat-button type="button" (click)="logout()">Se déconnecter</button>
+      <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" data-cy="nav-home">Accueil</a>
+      <a mat-button routerLink="/posts" routerLinkActive="active-link" data-cy="nav-posts">Articles</a>
+      <a mat-button routerLink="/topics" routerLinkActive="active-link" data-cy="nav-topics">Thématiques</a>
+      <button mat-button type="button" (click)="logout()" data-cy="logout">Se déconnecter</button>
     </nav>
   </mat-toolbar>
 }

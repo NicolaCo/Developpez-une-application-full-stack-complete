@@ -1,9 +1,9 @@
 @if (!isLoggedIn()) {
-  <div class="center">
+  <div class="center" data-cy="home">
     <img src="/assets/logo_p6.png" alt="logo" />
     <h1>Welcome to MDD</h1>
-    <button mat-raised-button color="primary" routerLink="/login" class="btn" aria-label="Go to login page">Se connecter</button>
-    <button mat-raised-button color="primary" routerLink="/signup" class="btn" aria-label="Go to subscribe page">S'inscrire</button>
+    <button mat-raised-button color="primary" routerLink="/login" class="btn" aria-label="Go to login page" data-cy="login-link">Se connecter</button>
+    <button mat-raised-button color="primary" routerLink="/signup" class="btn" aria-label="Go to subscribe page" data-cy="signup-link">S'inscrire</button>
   </div>
 } @else {
   <app-feed></app-feed>

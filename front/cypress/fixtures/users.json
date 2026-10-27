@@ -1,0 +1,12 @@
+{
+  "subscriber": {
+    "email": "e2e@mdd.test",
+    "username": "e2e_user",
+    "password": "E2ePassword1!"
+  },
+  "author": {
+    "email": "e2e.author@mdd.test",
+    "username": "e2e_author",
+    "password": "E2ePassword1!"
+  }
+}
