@@ -3,10 +3,11 @@
         <mat-card-header fxLayoutAlign="center center">
             <mat-card-title>Login</mat-card-title>
         </mat-card-header>
+        <a routerLink="/" data-cy="login-home-link"><mat-icon>arrow_back</mat-icon></a>
         <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()" data-cy="login-form">
             <mat-card-content fxLayout="column">
                 <mat-form-field fxFlex>
-                    <input matInput placeholder="Email" formControlName="email" data-cy="login-email">
+                    <input matInput placeholder="Email ou nom d'utilisateur" formControlName="email" data-cy="login-email">
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password"

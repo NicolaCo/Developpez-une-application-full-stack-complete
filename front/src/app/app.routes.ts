@@ -7,6 +7,7 @@ import { TopicsComponent } from './pages/topics/topics.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { CreatepostComponent } from './pages/createpost/createpost.component';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,11 @@ export const routes: Routes = [
     {
         path: 'posts/:id',
         component: PostDetailComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [authGuard]
     },
 ];

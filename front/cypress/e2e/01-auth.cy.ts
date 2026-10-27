@@ -23,7 +23,7 @@ describe('Authentification et accès', () => {
     cy.get('[data-cy="signup-username"]').should('be.visible');
     cy.get('[data-cy="signup-password"]').should('be.visible');
 
-    cy.get('[data-cy="nav-home"]').should('exist');
+    cy.get('[data-cy="signup-home-link"]').should('be.visible');
   });
 
   it('E2E-02 — Inscription valide', () => {

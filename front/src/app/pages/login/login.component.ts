@@ -1,11 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { catchError, EMPTY } from 'rxjs';
 import { MaterialModule } from '../../../shared/material.module';
 import { AuthService } from '../../core/service/auth.service';
 
 @Component({
-  imports: [MaterialModule],
+  imports: [MaterialModule, RouterLink],
   selector: 'app-login',
   styleUrl: './login.component.scss',
   templateUrl: './login.component.html',
@@ -14,18 +15,30 @@ export class LoginComponent {
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   public hide = true;
   public onError = false;
 
   public form = this.formBuilder.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
   public onSubmit(): void {
     this.onError = false;
-    this.authService.login(this.form.getRawValue()).subscribe({
+    if (this.form.invalid) {
+      this.onError = true;
+      this.cdr.detectChanges();
+      return;
+    }
+    this.authService.login(this.form.getRawValue()).pipe(
+      catchError(() => {
+        this.onError = true;
+        this.cdr.detectChanges();
+        return EMPTY;
+      })
+    ).subscribe({
       next: () => {
         const returnUrl = this.returnUrl();
         if (this.isSafeInternalUrl(returnUrl)) {
@@ -33,8 +46,7 @@ export class LoginComponent {
         } else {
           this.router.navigate(['/']);
         }
-      },
-      error: () => this.onError = true
+      }
     });
   }
 

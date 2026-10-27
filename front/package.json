@@ -6,6 +6,7 @@
     "start": "ng serve",
     "back:e2e": "cd ../back && ./scripts/init-e2e-db.sh && ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev,local,e2e",
     "e2e:db:init": "cd ../back && ./scripts/init-e2e-db.sh",
+    "e2e:db:reset": "cd ../back && ./scripts/reset-e2e-db.sh",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

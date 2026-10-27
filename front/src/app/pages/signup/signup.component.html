@@ -3,6 +3,7 @@
         <mat-card-header fxLayoutAlign="center center">
             <mat-card-title>Sign up</mat-card-title>
         </mat-card-header>
+        <a routerLink="/" data-cy="signup-home-link"><mat-icon>arrow_back</mat-icon></a>
         <form class="signup-form" [formGroup]="form" (ngSubmit)="onSubmit()" data-cy="signup-form">
             <mat-card-content fxLayout="column">
                 <mat-form-field fxFlex>
@@ -20,7 +21,7 @@
                     </button>
                 </mat-form-field>
             </mat-card-content>
-            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" data-cy="signup-submit">Submit</button>
+            <button mat-raised-button color="primary" type="submit" data-cy="signup-submit">Submit</button>
             @if (onError) {
                 <p class="error" data-cy="signup-error">An error occurred</p>
             }
