@@ -2,7 +2,7 @@
   <mat-card>
     <div class="items mt2" fxLayout="row" fxLayout.lt-md="column">
       @for (topic of topicsList() ; track topic.id) {
-        <app-topicscard [topic]="topic" (subscribe)="onSubscribe($event)" (detail)="onDetail($event)" fxFlex></app-topicscard>
+        <app-topicscard [topic]="topic" (subscribe)="onSubscribe($event)" (detail)="onDetail()" fxFlex></app-topicscard>
       }
     </div>
   </mat-card>
