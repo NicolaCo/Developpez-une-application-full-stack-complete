@@ -33,6 +33,10 @@ export class AuthService {
         this.tokenSignal.set(null);
     }
 
+    public updateToken(token: string): void {
+        this.setToken(token);
+    }
+
     private setToken(token: string): void {
         localStorage.setItem(TOKEN_KEY, token);
         this.tokenSignal.set(token);

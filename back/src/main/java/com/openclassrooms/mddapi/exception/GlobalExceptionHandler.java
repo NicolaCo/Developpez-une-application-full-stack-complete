@@ -86,6 +86,13 @@ public class GlobalExceptionHandler {
         return ApiError.of(HttpStatus.NOT_FOUND.value(), "Topic not found");
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleUserNotFound(UserNotFoundException exception) {
+        log.warn("404 User not found: {}", exception.getMessage());
+        return ApiError.of(HttpStatus.NOT_FOUND.value(), "User not found");
+    }
+
     @ExceptionHandler(NoResourceFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handleNoResourceFound(NoResourceFoundException exception) {

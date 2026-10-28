@@ -1,3 +1,40 @@
-<div data-cy="profile">
-  <p>profile works!</p>
+<div class="profile" fxLayout="column" fxLayoutAlign="start center" data-cy="profile">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>Mon profil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column">
+      <p data-cy="profile-current-email">Email : {{ user()?.email }}</p>
+      <p data-cy="profile-current-username">Nom d'utilisateur : {{ user()?.username }}</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" data-cy="profile-form">
+        <mat-form-field fxFlex>
+          <input matInput type="email" placeholder="Email" formControlName="email" data-cy="profile-email">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput placeholder="Nom d'utilisateur" formControlName="username" data-cy="profile-username">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput type="password" placeholder="Nouveau mot de passe (optionnel)" formControlName="password" data-cy="profile-password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" data-cy="profile-save">Enregistrer</button>
+        @if (onError) {
+          <p class="error" data-cy="profile-error">Une erreur est survenue</p>
+        }
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="subscriptions-card">
+    <mat-card-header>
+      <mat-card-title>Mes abonnements</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column">
+      @for (topic of subscribedTopics(); track topic.id) {
+        <div>{{ topic.title }}</div>
+      } @empty {
+        <p class="empty" data-cy="subscriptions-empty">Aucun abonnement pour le moment.</p>
+      }
+    </mat-card-content>
+  </mat-card>
 </div>

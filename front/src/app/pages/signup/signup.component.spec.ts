@@ -11,6 +11,7 @@ describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   const authServiceMock = { register: vi.fn(), token: vi.fn(), isLoggedIn: vi.fn() };
+  const validPassword = 'Password123!';
 
   beforeEach(async () => {
     authServiceMock.register.mockReturnValue(of({ token: 'a.jwt.token' }));
@@ -39,20 +40,20 @@ describe('SignupComponent', () => {
   });
 
   it('should call register with the form value on submit', () => {
-    component.form.setValue({ email: 'user@example.com', username: 'userone', password: 'password123' });
+    component.form.setValue({ email: 'user@example.com', username: 'userone', password: validPassword });
 
     component.onSubmit();
 
     expect(authServiceMock.register).toHaveBeenCalledWith({
       email: 'user@example.com',
       username: 'userone',
-      password: 'password123'
+      password: validPassword
     });
   });
 
   it('should set onError when the registration fails', () => {
     authServiceMock.register.mockReturnValue(throwError(() => new Error('Conflict')));
-    component.form.setValue({ email: 'user@example.com', username: 'userone', password: 'password123' });
+    component.form.setValue({ email: 'user@example.com', username: 'userone', password: validPassword });
 
     component.onSubmit();
 
