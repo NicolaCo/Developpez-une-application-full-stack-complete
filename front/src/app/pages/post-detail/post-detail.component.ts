@@ -7,6 +7,7 @@ import { map, switchMap } from 'rxjs';
 import { MaterialModule } from '../../../shared/material.module';
 import { PostService } from '../../core/service/post.service';
 import { CommentService } from '../../core/service/comment.service';
+import { TopicService } from '../../core/service/topic.service';
 import { Post } from '../../core/model/post.interface';
 import { Comment } from '../../core/model/comment.interface';
 
@@ -21,6 +22,7 @@ export class PostDetailComponent {
   private formBuilder = inject(FormBuilder);
   private postService = inject(PostService);
   private commentService = inject(CommentService);
+  private topicService = inject(TopicService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
@@ -35,6 +37,16 @@ export class PostDetailComponent {
     ),
     { initialValue: null }
   );
+
+  protected readonly topics = toSignal(this.topicService.all(), { initialValue: [] });
+
+  protected getTopicName(topicId: number | undefined): string {
+    if (topicId === undefined || topicId === null) {
+      return '';
+    }
+    const topic = this.topics().find(t => t.id === topicId);
+    return topic ? topic.title : '';
+  }
 
   protected readonly comments = signal<Comment[]>([]);
   protected onError = false;
